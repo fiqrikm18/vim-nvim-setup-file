@@ -16,9 +16,26 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'machakann/vim-highlightedyank'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'carlitux/deoplete-ternjs'
+Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
+Plug 'jodosha/vim-godebug' " Debugger integration via delve
+
+let g:deoplete#sources#go#gocode_binary = "/home/e180/go/bin/gocode"
+
+set tabstop=2       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
+set shiftwidth=2    " Indents will have a width of 4
+set softtabstop=2   " Sets the number of columns for a TAB
+set expandtab       " Expand TABs to spaces
 
 let g:deoplete#enable_at_startup = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+set splitbelow
 
 " Enable alignment
 let g:neoformat_basic_format_align = 1
@@ -47,10 +64,14 @@ set et
 
 set ttimeoutlen=50
 
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'murmur'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
+
+let g:neoterm_default_mod='belowright' " open terminal in bottom split
+let g:neoterm_size=16 " terminal split size
+let g:neoterm_autoscroll=1 " scroll to the bottom when running a command
 
 call plug#end()
 
