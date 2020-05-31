@@ -1,7 +1,8 @@
 set nocompatible
 set number relativenumber
 
-call plug#begin('~/.local/share/nvim/plugged')
+" call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin()
 Plug 'davidhalter/jedi-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
@@ -22,16 +23,14 @@ Plug 'pangloss/vim-javascript'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
 Plug 'jodosha/vim-godebug' " Debugger integration via delve
+Plug 'mhartington/oceanic-next'
 
 let g:deoplete#sources#go#gocode_binary = "/home/e180/go/bin/gocode"
 
-set tabstop=2       " The width of a TAB is set to 4.
-                    " Still it is a \t. It is just that
-                    " Vim will interpret it to be having
-                    " a width of 4.
-set shiftwidth=2    " Indents will have a width of 4
-set softtabstop=2   " Sets the number of columns for a TAB
-set expandtab       " Expand TABs to spaces
+set tabstop=2       
+set shiftwidth=2    
+set softtabstop=2   
+set expandtab       
 
 let g:deoplete#enable_at_startup = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -64,7 +63,7 @@ set et
 
 set ttimeoutlen=50
 
-let g:airline_theme = 'murmur'
+let g:airline_theme = 'papercolor'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
@@ -72,6 +71,14 @@ let g:airline#extensions#branch#enabled=1
 let g:neoterm_default_mod='belowright' " open terminal in bottom split
 let g:neoterm_size=16 " terminal split size
 let g:neoterm_autoscroll=1 " scroll to the bottom when running a command
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+syntax enable
+colorscheme OceanicNext
 
 call plug#end()
 
